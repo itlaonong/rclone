@@ -46,7 +46,6 @@ require (
 	github.com/minio/minio-go/v7 v7.0.63
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/moby/sys/mountinfo v0.6.2
-	github.com/ncw/go-acd v0.0.0-20201019170801-fe55f33415b1
 	github.com/ncw/swift/v2 v2.0.2
 	github.com/oracle/oci-go-sdk/v65 v65.51.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
@@ -189,8 +188,9 @@ require (
 	github.com/ProtonMail/go-crypto v0.0.0-20230923063757-afb1ddc0824c
 	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
-	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/pkg/xattr v0.4.9
 	golang.org/x/mobile v0.0.0-20231006135142-2b44d11868fe
 	golang.org/x/term v0.15.0
 )
+
+replace github.com/jlaffaye/ftp v0.2.0 => github.com/itlaonong/ftp v0.2.1-0.20240106062638-12a01993b99e

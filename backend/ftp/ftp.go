@@ -231,6 +231,7 @@ type Options struct {
 	ShutTimeout       fs.Duration          `config:"shut_timeout"`
 	AskPassword       bool                 `config:"ask_password"`
 	Enc               encoder.MultiEncoder `config:"encoding"`
+	Charset           string               `config:"charset"`
 	SocksProxy        string               `config:"socks_proxy"`
 }
 
@@ -463,6 +464,9 @@ func (f *Fs) ftpConnection(ctx context.Context) (c *ftp.ServerConn, err error) {
 	}
 	if f.ci.Dump&(fs.DumpHeaders|fs.DumpBodies|fs.DumpRequests|fs.DumpResponses) != 0 {
 		ftpConfig = append(ftpConfig, ftp.DialWithDebugOutput(&debugLog{auth: f.ci.Dump&fs.DumpAuth != 0}))
+	}
+	if f.opt.Charset == "GBK" {
+		ftpConfig = append(ftpConfig, ftp.DialWithCharset("GBK"))
 	}
 	err = f.pacer.Call(func() (bool, error) {
 		c, err = ftp.Dial(f.dialAddr, ftpConfig...)
